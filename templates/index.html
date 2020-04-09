@@ -10,15 +10,22 @@
     <div>Add a new task to be done: 
         <form action="/add" method="POST">
             <input type="text" name="task">
-            <input type="submit">
+            <input type="submit" value="Add task">
         </form>
     </div>
     <div>
-    <ul>
-        {% for todo in todos %}
-        <li><input type="checkbox">{{todo.text}}</li>
-        {% endfor %}
-    </ul>
+         <h3>Incomplete Items</h3>
+            <ul>
+            {% for todo in incomplete %}
+            <li>{{todo.text}} <a href="{{ url_for('complete',id=todo.id) }}">Mark as complete</a></li>
+            {% endfor %}
+        </ul>
+        <h3>Complete Items</h3>
+            <ul>
+            {% for todo in complete %}
+            <li>{{todo.text}}</li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
 </html>
